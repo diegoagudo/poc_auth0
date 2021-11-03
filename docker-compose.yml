@@ -1,0 +1,18 @@
+version: "3"
+
+networks:
+  plt13:
+    driver: bridge
+        
+services:
+  login_sso:
+    build: ./
+    ports:
+      - "3003:3003"
+    stdin_open: true
+    tty: true
+    volumes:
+      - /home/$USER/.ssh:/root/.ssh
+      - /home/$USER/projetos-terceiros/login-sso:/home/app
+    restart: always
+    container_name: login_sso
